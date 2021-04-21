@@ -1,0 +1,19 @@
+﻿@using Microsoft.Extensions.Options
+@using Three.One
+@model Three.One.Models.Department
+@inject IOptions<ThreeOptions> options
+<tr>
+    @if (Model.EmployeeCount > options.Value.BoldDepartmentEmployeeCountThreshold)
+    {
+        <td><strong>@Model.Name</strong></td>
+    }
+    else
+    {
+        <td>@Model.Name</td>
+    }
+    <td>@Model.Location</td>
+    <td>@Model.EmployeeCount</td>
+    <td>
+        <a asp-page="Employee/EmployeeList" asp-route-departmentId="@Model.Id">Employees</a>
+    </td>
+</tr>

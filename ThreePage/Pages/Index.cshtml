@@ -1,0 +1,30 @@
+﻿@page  
+@using Three.One.Models
+@using Three.One.Services
+@inject IDepartmentService departmentService
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Employee Count</th>
+                <th>操作</th>
+            </tr>
+            @Html.DisplayFor(expression: x => x.Departments)
+        </table>
+        <a asp-page="Department/AddDepartment">Add</a>
+    </div>
+</div>
+
+@functions
+{
+    public IEnumerable<Three.One.Models.Department> Departments { get; set; }
+
+    public async Task OnGetAsync()
+    {
+        Departments = await departmentService.GetAll();
+    }
+
+}
