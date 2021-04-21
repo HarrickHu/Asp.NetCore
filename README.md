@@ -8,7 +8,7 @@ A demo of MVC.
 A demo of Razor page.
 
 ## 3. ThreeSignalR
-A demo of MVC.
+A demo of SignalR. SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：Long Polling, Server Sent Events 和 Websocket.
 
 ## 4. ThreeBlazor
 A demo of Blazor.
