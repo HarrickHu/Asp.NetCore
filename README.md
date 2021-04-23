@@ -9,7 +9,7 @@ A demo of Razor page.
 
 ## 3. ThreeSignalR
 A demo of SignalR.  
-SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：Long Polling, Server Sent Events 和 Websocket。
+SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：Long Polling, Server Sent Events 和 Web socket。
 #### Long Polling
 * Polling是实现实时web的一种笨办法，它就是通过定期的向服务器发送请求，来查看服务器的数据是否有变化。
 如果服务器数据没变化，就返回204 NoContent；如果有变化，就把最新的数据发送给客户端。
@@ -27,6 +27,18 @@ SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：L
 * 并且不受SEE的那个浏览器连接数限制（6个），大部分浏览器对Web Socket连接数的限制是50个。
 * 消息类型：可以是文本和二进制，Web Socket也支持流媒体（音频和视频）。
 * 其实正常的Http请求也是用了TCP Socket。Web Socket标准使用了握手机制把用于Http的Socket升级为使用WS协议的WebSocket socket。
+* Web Socket生命周期，所有的一切都发生在TCP Socket里面：Http握手（首先一个常规的Http请求会要求服务器更新socket并协商）->通信/数据交换->关闭
+* Http握手，每一个Web Socket开始的时候都是一个简单的Http Socket。客户端首先发送一个Get请求到服务器，来请求升级Socket。如果服务器同意的话，这个Socket从这时开始就变成了Web Socket。
+
+![Uploading image.png…]()
+
+
+
+
+
+
+
+
 
 
 ## 4. ThreeBlazor
