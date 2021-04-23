@@ -30,7 +30,6 @@ SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：L
 * Web Socket生命周期，所有的一切都发生在TCP Socket里面：Http握手（首先一个常规的Http请求会要求服务器更新socket并协商）->通信/数据交换->关闭
 * Http握手，每一个Web Socket开始的时候都是一个简单的Http Socket。客户端首先发送一个Get请求到服务器，来请求升级Socket。如果服务器同意的话，这个Socket从这时开始就变成了Web Socket。
 
-![Uploading image.png…]()
 
 
 
