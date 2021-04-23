@@ -9,14 +9,29 @@ A demo of Razor page.
 
 ## 3. ThreeSignalR
 A demo of SignalR.  
-SignalR是一个.NET Core/.NET Framework的开源实时框架。
-SignalR使用了三种“底层”技术来实现实时web, 它们分别是：Long Polling, Server Sent Events 和 Web socket。   
-SignalR基于这三种技术构建，抽象于它们之上，它让你更好的关注业务问题而不是底层传输技术问题。  
-SignalR这个框架分服务器和客户端，服务器支持ASP.Net Core 和ASP.Net; 而客户端除了支持浏览器里的JavaScript以外，也支持其他类型的客户端，例如桌面应用。  
-SignalR采用了回落机制，它有能力去协商支持的这三种传输类型。也可以禁用这种回落机制，而只选择其中一种。  
-RPC(Remote Procedure Call). 它的优点就是可以抽象调用本地方法一样调用远程服务。  
-SignalR采用RPC方式来进行客户端与服务器之间的通信。  
-SignalR利用底层传输来让服务器可以调用客户端的方法，反之亦然，这些方法可以带参数，参数也可以是复杂对象，SignalR负责序列化和反序列化。  
+* SignalR是一个.NET Core/.NET Framework的开源实时框架。
+* SignalR使用了三种“底层”技术来实现实时web, 它们分别是：Long Polling, Server Sent Events 和 Web socket。   
+* SignalR基于这三种技术构建，抽象于它们之上，它让你更好的关注业务问题而不是底层传输技术问题。  
+* SignalR这个框架分服务器和客户端，服务器支持ASP.Net Core 和ASP.Net; 而客户端除了支持浏览器里的JavaScript以外，也支持其他类型的客户端，例如桌面应用。  
+* SignalR采用了回落机制，它有能力去协商支持的这三种传输类型。也可以禁用这种回落机制，而只选择其中一种。  
+* RPC(Remote Procedure Call). 它的优点就是可以抽象调用本地方法一样调用远程服务。  
+* SignalR采用RPC方式来进行客户端与服务器之间的通信。  
+* SignalR利用底层传输来让服务器可以调用客户端的方法，反之亦然，这些方法可以带参数，参数也可以是复杂对象，SignalR负责序列化和反序列化。  
+* Hub是SignalR的一个组件，它运行在Asp.Net Core应用里，所以他是服务器端的一个类。  
+* Hub使用RPC接受从客户端发出来的消息，也能把消息发送给客户端。所以它是一个通信用的Hub。  
+* 在Asp.Net Core里，自己创建的Hub类需要继承于基类Hub。  
+* 在Hub类里面，我们就可以调用所有客户端上的方法了。同样客户端也可以调用Hub类里的方法。  
+* 之前说过方法调用的时候可以传递复杂参数，SignalR可以将参数序列化和反序列化。这些参数被序列化的格式叫做Hub协议，所以Hub协议就是一种用来序列化和反序列化的格式。  
+* Hub协议的默认协议是Json，还支持另外一个协议叫MessagePack。MessagePack是二进制格式的，他比Json更紧凑，而且处理起来更简单快速，因为他是二进制的。  
+* 此外，SignalR也可以扩展使用其他协议。
+* 横向扩展
+* 这时负载均衡器会保证每个进来的请求按照一定的逻辑分配到可能是不同的服务器上。
+* 在使用Web Socket的时候，没什么问题，因为一旦Web Socket的连接建立，就像在浏览器和那个服务器之间打开了隧道一样，服务器是不会切换的。
+* 但是如果使用Long Polling，就可能有问题了，因为使用Long Polling的情况下，每次发送消息都是不同的请求，而每次请求可能会到达不同的服务器，不同的服务器可能不知道前一个服务器通信的内容，这就会造成问题。
+* 针对这个问题，我们需要使用Sticky Session（粘性会话）。
+* 作为第一次请求的响应的一部分，负载均衡器会在浏览器里面设置一个Cookie，来表示使用过这个服务器，在后续的请求里，负载均衡器会读取Cookie，然后把请求分配给同一个服务器。
+
+
 #### Long Polling
 * Polling是实现实时web的一种笨办法，它就是通过定期的向服务器发送请求，来查看服务器的数据是否有变化。
 如果服务器数据没变化，就返回204 NoContent；如果有变化，就把最新的数据发送给客户端。
