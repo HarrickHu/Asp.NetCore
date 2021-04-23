@@ -28,8 +28,10 @@ SignalR 使用了三种“底层”技术来实现实时web, 它们分别是：L
 * 消息类型：可以是文本和二进制，Web Socket也支持流媒体（音频和视频）。
 * 其实正常的Http请求也是用了TCP Socket。Web Socket标准使用了握手机制把用于Http的Socket升级为使用WS协议的WebSocket socket。
 * Web Socket生命周期，所有的一切都发生在TCP Socket里面：Http握手（首先一个常规的Http请求会要求服务器更新socket并协商）->通信/数据交换->关闭
-* Http握手，每一个Web Socket开始的时候都是一个简单的Http Socket。客户端首先发送一个Get请求到服务器，来请求升级Socket。如果服务器同意的话，这个Socket从这时开始就变成了Web Socket。  
-![Http 握手](https://github.com/HarrickHu/Asp.NetCore/blob/main/images/http%E6%8F%A1%E6%89%8B.png)
+* Http握手，每一个Web Socket开始的时候都是一个简单的Http Socket。客户端首先发送一个Get请求到服务器，来请求升级Socket。如果服务器同意的话，这个Socket从这时开始就变成了Web Socket。 
+![Http 握手](https://github.com/HarrickHu/Asp.NetCore/blob/main/images/http%E6%8F%A1%E6%89%8B0.png)  
+![Http 握手](https://github.com/HarrickHu/Asp.NetCore/blob/main/images/http%E6%8F%A1%E6%89%8B.png)  
+
 
 
 
