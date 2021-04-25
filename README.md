@@ -7,8 +7,8 @@ A demo of MVC.
 ## 2. ThreePage
 A demo of Razor page.
 
-## 3. ThreeSignalR
-A demo of SignalR. 
+## 3. SignalRDemo
+A demo of SignalR.  
 
 #### SignalR
 * SignalR是一个.NET Core/.NET Framework的开源实时框架。
@@ -19,7 +19,7 @@ A demo of SignalR.
 #### 回落机制
 * SignalR采用了回落机制，它有能力去协商支持的这三种传输类型。也可以禁用这种回落机制，而只选择其中一种。 
 #### RPC 
-* RPC(Remote Procedure Call)， 它的优点就是可以抽象调用本地方法一样调用远程服务。  
+* RPC(Remote Procedure Call). 它的优点就是可以抽象调用本地方法一样调用远程服务。  
 * SignalR采用RPC方式来进行客户端与服务器之间的通信。  
 * SignalR利用底层传输来让服务器可以调用客户端的方法，反之亦然，这些方法可以带参数，参数也可以是复杂对象，SignalR负责序列化和反序列化。
 
