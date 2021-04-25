@@ -1,5 +1,6 @@
 # Asp.NetCore
-Asp.Net Core version 3.1 and above demos.
+Asp.Net Core version 3.1 demos.
+参考源视频链接地址：https://www.bilibili.com/video/BV1c441167KQ
 
 ## 1. Three.One
 A demo of MVC.
