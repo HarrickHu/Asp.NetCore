@@ -7,7 +7,7 @@ A demo of MVC.
 ## 2. ThreePage
 A demo of Razor page.
 
-## 3. ThreeSignalR
+## 3. SignalRDemo
 A demo of SignalR.  
 #### SignalR
 * SignalR是一个.NET Core/.NET Framework的开源实时框架。
