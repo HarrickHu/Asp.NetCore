@@ -13,6 +13,5 @@ namespace SignalRDemo.Services
         {
             return _count++;
         }
-
     }
 }

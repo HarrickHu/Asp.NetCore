@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using SignalRDemo.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SignalRDemo
 {
+    //[Authorize]
     public class CountHub: Hub
     {
         private readonly CountService _countService;
@@ -19,6 +18,7 @@ namespace SignalRDemo
 
         public async Task GetLatestCount(string random)
         {
+            //var user = Context.User.Identity.Name;
             int count;
             do
             {
@@ -29,6 +29,20 @@ namespace SignalRDemo
             while (count < 10);
 
             await Clients.All.SendAsync(method: "Finished");
+        }
+
+        public override async Task OnConnectedAsync()
+        {
+            //var connectionId = Context.ConnectionId;
+            //var client = Clients.Client(connectionId);
+
+            //await client.SendAsync(method: "someFunc", new { });
+            //await Clients.AllExcept(connectionId).SendAsync(method: "someFunc");
+
+            //await Groups.AddToGroupAsync(connectionId, "MyGroup");
+            //await Groups.RemoveFromGroupAsync(connectionId, "MyGroup");
+
+            //await Clients.Groups("MyGroup").SendAsync(method: "someFunc", new { });
         }
     }
 }
